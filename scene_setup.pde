@@ -104,12 +104,20 @@ void setup(SceneManager sceneManager)
   //Empty Catacombs
   //SceneChanger catacombs_to_sister = new MoveToSceneObject("catacombs_to_sister", 200 * UF, 20 * UF, 50, 50, "arrowUp.png", "sister");
   
+  
   SceneChanger catacombs_to_hallway = new SceneChanger("catacombs_to_hallway", "hallway");
   catacombs_to_hallway.set_image("door.png");
   catacombs_to_hallway.set_position(new PVector(200 * UF, 30 * UF));
   catacombs_to_hallway.set_height(50 * UF);
   catacombs_to_hallway.set_width(50 * UF);
   catacombs_to_hallway.set_text("Go to hallway");
+  
+  LockObject locked_hallway = new LockObject("locked_hallway", teddy_bear, catacombs_to_hallway);
+  locked_hallway.set_image("locked_door.png");
+  locked_hallway.set_position(new PVector(200 * UF, 30 * UF));
+  locked_hallway.set_height(50 * UF);
+  locked_hallway.set_width(50 * UF);
+  locked_hallway.set_text("Leads to hallway. Find a teddy bear to unlock it!");
   
   
   SceneChanger catacombs_to_pillar_room = new SceneChanger("catacombs_to_pillar_room", "pillar_room");
@@ -128,7 +136,7 @@ void setup(SceneManager sceneManager)
   catacombs_to_candle_room.set_text("Go to candle_room");
   
   
-  catacombs.add_object(catacombs_to_hallway);
+  catacombs.add_object(locked_hallway);
   catacombs.add_object(catacombs_to_pillar_room);
   catacombs.add_object(catacombs_to_candle_room);
   
@@ -283,7 +291,6 @@ void setup(SceneManager sceneManager)
   burial_room.add_object(burial_room_to_skull_room);
   burial_room.add_object(burial_room_to_hallway);
    
-  
   
   
   sceneManager.add_scene(catacombs);
