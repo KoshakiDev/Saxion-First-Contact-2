@@ -1,49 +1,27 @@
 class Scene 
 {
-  private String sceneName;
+  private String ID;
   private PImage backgroundImage;
   private ArrayList<GameObject> gameObjects;
   
-  private ArrayList<GameObject> recentlyAddedGameObjects;
-  private ArrayList<GameObject> markedForDeathGameObjects;
+  private ArrayList<GameObject> added_objects;
+  private ArrayList<GameObject> removed_objects;
   
-  public Scene(String sceneName, String backgroundImageFile) 
+  public Scene(){}
+  
+  public Scene(String ID, String backgroundImageFile) 
   {
-    this.sceneName = sceneName;
+    this.ID = ID;
     this.backgroundImage = loadImage(backgroundImageFile);
     gameObjects = new ArrayList<GameObject>();
-    markedForDeathGameObjects = new ArrayList<GameObject>();
-    recentlyAddedGameObjects = new ArrayList<GameObject>();
+    removed_objects = new ArrayList<GameObject>();
+    added_objects = new ArrayList<GameObject>();
   }
   
-  public void addGameObject(GameObject object) 
+  public void update() 
   {
-    recentlyAddedGameObjects.add(object);
-  }
-  
-  public void removeGameObject(GameObject object) 
-  {
-    markedForDeathGameObjects.add(object);
-  }
-  
-  public void updateScene() 
-  {
-    if(markedForDeathGameObjects.size() > 0) 
-    {
-      for(GameObject object : markedForDeathGameObjects) 
-      {
-        gameObjects.remove(object);
-      }
-      markedForDeathGameObjects  = new ArrayList<GameObject>();
-    }
-    if(recentlyAddedGameObjects.size() > 0) 
-    {
-      for(GameObject object : recentlyAddedGameObjects) 
-      {
-        gameObjects.add(object);
-      }
-      recentlyAddedGameObjects  = new ArrayList<GameObject>();
-    }
+    clear_removed_objects();
+    clear_added_objects();
   }
   
   public void draw(int wwidth, int wheight) 
@@ -71,9 +49,61 @@ class Scene
       object.mouseClicked();
     }
   }
-  
-  public String getSceneName() 
+  public void mouseDragged()
   {
-    return this.sceneName;
+    for(GameObject object : gameObjects) 
+    {
+      object.mouseDragged();
+    }
+  }
+  
+  public void mouseReleased()
+  {
+    for(GameObject object : gameObjects) 
+    {
+      object.mouseReleased();
+    }
+  }
+  
+  
+  // Add and Remove Methods
+  public void add_object(GameObject object) 
+  {
+    added_objects.add(object);
+  }
+  
+  public void remove_object(GameObject object) 
+  {
+    removed_objects.add(object);
+  }
+  
+  
+  public void clear_removed_objects()
+  {
+    if(removed_objects.size() > 0) 
+    {
+      for(GameObject object : removed_objects) 
+      {
+        gameObjects.remove(object);
+      }
+      removed_objects  = new ArrayList<GameObject>();
+    }
+  }
+  public void clear_added_objects()
+  {
+    if(added_objects.size() > 0) 
+    {
+      for(GameObject object : added_objects) 
+      {
+        gameObjects.add(object);
+      }
+      added_objects  = new ArrayList<GameObject>();
+    }
+  }
+  
+  
+  public String get_ID() 
+  {
+    return this.ID;
   }
 }

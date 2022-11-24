@@ -4,12 +4,9 @@ final int UF = 3;
 int wwidth = 380 * UF;
 int wheight = 180 * UF;
 
-
+GameObject chosen_item = new GameObject("");
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
-
-Scene InventoryScene;
-  
 
 void settings()
 {
@@ -18,35 +15,41 @@ void settings()
 
 void setup()
 {
-  /*
-  InventoryScene = new Scene("Inventory", "back01.png");
-  
-  Collectable apple = new Collectable("apple", "back04_apple.png");
-  CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
-  
-  InventoryScene.addGameObject(object6);
-  */
   setup(sceneManager); //Check scene_setup
 }
 
+// Main game loop
 void draw()
 {
-  sceneManager.getCurrentScene().draw(wwidth, wheight);
-  sceneManager.getCurrentScene().updateScene();
+  sceneManager.get_current_scene().draw(wwidth, wheight);
+  sceneManager.get_current_scene().update();
   
-  //InventoryScene.draw(0, 0);
-  //InventoryScene.updateScene();
-  
-  inventoryManager.clearMarkedForDeathCollectables();
-  
+  inventoryManager.draw();
+  inventoryManager.update();
 }
 
+// Input-related
 void mouseMoved() 
 {
-  sceneManager.getCurrentScene().mouseMoved();
+  sceneManager.get_current_scene().mouseMoved();
+  inventoryManager.mouseMoved();
 }
 
 void mouseClicked() 
 {
-  sceneManager.getCurrentScene().mouseClicked();
+  sceneManager.get_current_scene().mouseClicked();
+  inventoryManager.mouseClicked();
+}
+
+void mouseDragged()
+{
+  sceneManager.get_current_scene().mouseDragged();
+  inventoryManager.mouseDragged();
+}
+
+void mouseReleased()
+{
+  sceneManager.get_current_scene().mouseReleased();
+  inventoryManager.mouseReleased();
+  chosen_item = new GameObject("");
 }

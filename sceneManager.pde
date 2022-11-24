@@ -1,46 +1,42 @@
-import java.util.Stack;
 import java.util.HashMap;
 
 class SceneManager 
 {
   private HashMap<String, Scene> scenes;
-  private Stack<Scene> scenesStack;
+  
+  private Scene current_scene;
   
   public SceneManager() 
   {
     scenes = new HashMap<String, Scene>();
-    scenesStack = new Stack<Scene>();
+    current_scene = new Scene();
   }
   
-  public void addScene(Scene scene) 
+  public void add_scene(Scene scene) 
   {
-    scenes.put(scene.getSceneName(), scene);
-    if(scenesStack.size() == 0)
-    {
-      scenesStack.push(scene);
-    }
+    scenes.put(scene.get_ID(), scene);
   }
   
-  public void goToScene(String sceneName) throws Exception 
+  public void go_to_scene(String ID) throws Exception 
   {
-    if(scenes.containsKey(sceneName)) 
+    if(scenes.containsKey(ID)) 
     {
-      scenesStack.push(scenes.get(sceneName));
+      current_scene = scenes.get(ID);
     }
     else 
     {
-      throw new Exception("Scene not found with name: "+ sceneName + "." + 
+      throw new Exception("Scene not found with name: "+ ID + "." + 
                            "Make sure it was added to the sceneManager.");
     }
   }
   
-  public void goToPreviousScene() 
+  public void set_current_scene(Scene scene)
   {
-    scenesStack.pop();
+    current_scene = scene;
   }
   
-  public Scene getCurrentScene() 
+  public Scene get_current_scene() 
   {
-    return scenesStack.peek();
+    return current_scene;
   }
 }

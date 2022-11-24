@@ -1,40 +1,101 @@
 class InventoryManager 
 {
-  private ArrayList<Collectable> collectables;
-  private ArrayList<Collectable> markedForDeathCollectables;
-  
+  private int icon_height = 50;
+  private int icon_space = 25;
+  private int icon_width = 50;
+  private ArrayList<ItemObject> items;
+  private ArrayList<ItemObject> removed_items;
   
   public InventoryManager() 
   {
-     collectables = new ArrayList<Collectable>();
-     markedForDeathCollectables = new ArrayList<Collectable>();
+     items = new ArrayList<ItemObject>();
+     removed_items = new ArrayList<ItemObject>();
   }
   
-  
-  public void addCollectable(Collectable collectable) 
+  public void update()
   {
-    collectables.add(collectable);
+    clear_removed_items();
   }
   
-  public void removeCollectable(Collectable collectable) 
+  public void draw_item(ItemObject item, PVector position)
   {
-    markedForDeathCollectables.add(collectable);
+    pushMatrix();
+    fill(0);
+    text(item.get_name(), position.x, position.y); 
+    popMatrix();
   }
   
-  public boolean containsCollectable(Collectable collectable) 
+  public void draw()
   {
-    return collectables.contains(collectable);
-  }
-  
-  public void clearMarkedForDeathCollectables() 
-  {
-    if(markedForDeathCollectables.size() > 0) 
+    for(ItemObject item : items)
     {
-      for(Collectable collectable : markedForDeathCollectables) 
+      item.draw();
+    }
+  }
+  
+  void mouseMoved()
+  {
+    for(ItemObject item : items)
+    {
+      item.mouseMoved();
+    }
+  }
+  
+  void mouseClicked()
+  {
+    for(ItemObject item : items)
+    {
+      item.mouseClicked();
+    }
+  }
+  
+  void mouseDragged()
+  {
+    for(ItemObject item : items)
+    {
+      item.mouseDragged();
+    }
+  }
+  
+  void mouseReleased()
+  {
+    for(ItemObject item : items)
+    {
+      item.mouseReleased();
+    }
+  }
+  
+  // Add and Remove Methods
+  public void add_item(ItemObject item) 
+  {
+    items.add(item);
+    item.set_height(icon_height);
+    item.set_width(icon_width);
+    item.set_text_size(9);
+    item.set_position(new PVector(items.size() * icon_width, icon_height));
+    item.set_initial_position(new PVector(items.size() * icon_width, icon_height));
+    item.set_text(item.get_name());
+  }
+  
+  public void remove_item(ItemObject item) 
+  {
+    removed_items.add(item);
+  }
+  
+  public boolean contains_item(ItemObject item) 
+  {
+    return items.contains(item);
+  }
+  
+  public void clear_removed_items() 
+  {
+    if(removed_items.size() > 0) 
+    {
+      for(ItemObject item : removed_items) 
       {
-        collectables.remove(collectable);
+        items.remove(item);
       }
-      markedForDeathCollectables  = new ArrayList<Collectable>();
+      removed_items  = new ArrayList<ItemObject>();
     }
   }
 }
