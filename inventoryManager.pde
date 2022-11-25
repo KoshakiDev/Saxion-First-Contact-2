@@ -17,14 +17,6 @@ class InventoryManager
     clear_removed_items();
   }
   
-  public void draw_item(ItemObject item, PVector position)
-  {
-    pushMatrix();
-    fill(0);
-    text(item.get_name(), position.x, position.y); 
-    popMatrix();
-  }
-  
   public void draw()
   {
     for(ItemObject item : items)
@@ -96,6 +88,11 @@ class InventoryManager
         items.remove(item);
       }
       removed_items  = new ArrayList<ItemObject>();
+      for(int i = 0; i < items.size(); i++)
+      {
+        items.get(i).set_position(new PVector((i + 1) * icon_width, icon_height));
+        items.get(i).set_initial_position(new PVector((i + 1) * icon_width, icon_height));
+      }
     }
   }
 }

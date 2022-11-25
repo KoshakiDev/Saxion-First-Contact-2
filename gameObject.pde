@@ -20,6 +20,10 @@ class GameObject
   private float text_width;
   private float textHeight;
   
+  protected boolean has_cutscene = false;
+  protected String play_cutscene_ID = ""; 
+  
+  
   public GameObject() {}
   
   public GameObject(String name) 
@@ -32,6 +36,12 @@ class GameObject
     hasText = false;
     hasHoverImage = false;
     mouseIsHovering = false;
+  }
+  
+  public void set_cutscene_ID(String cutscene_ID)
+  {
+    has_cutscene = true;
+    play_cutscene_ID = cutscene_ID;
   }
   
   public void set_text_size(float text_size)

@@ -5,11 +5,13 @@ class ItemObject extends GameObject
   private GameObject replacement;
   private boolean has_replacement;
   
+  
   public ItemObject(String ID) { super(ID); initial_position = new PVector(0, 0); }
   
   public void set_replacement_object(GameObject replacement) { has_replacement = true; this.replacement = replacement; }
   
   public void set_initial_position(PVector initial_position) { this.initial_position = initial_position; }
+  
 
   void mouseClicked() 
   {
@@ -20,6 +22,13 @@ class ItemObject extends GameObject
         move_to_inventory();
       }
       return;
+    }
+    else
+    {
+      if(has_cutscene && mouseIsHovering)
+      {
+        cutscene_manager.play_cutscene(play_cutscene_ID);
+      }
     }
   }
   

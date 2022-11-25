@@ -1,11 +1,22 @@
 void setup(SceneManager sceneManager)
 { 
+  String[] test_1_image_paths = new String[3];
+  
+  test_1_image_paths[0] = "frame_1.png";
+  test_1_image_paths[1] = "frame_2.png";
+  test_1_image_paths[2] = "frame_3.png";
+  
+  Cutscene test_1 = new Cutscene("test_1", test_1_image_paths);
+  
+  cutscene_manager.add_cutscene(test_1); 
+  
   ItemObject skull = new ItemObject("Skull");
   skull.set_position(new PVector (100 * UF, 50 * UF));
   skull.set_height(75 * UF);
   skull.set_width(75 * UF);
   skull.set_image("skull.png");
   skull.set_text("This is a skull! It looks to have two eyes and a mouth!");
+  skull.set_cutscene_ID("test_1");
   
   
   ItemObject locket = new ItemObject("Locket");
@@ -43,7 +54,7 @@ void setup(SceneManager sceneManager)
   body.set_height(75 * UF);
   body.set_width(75 * UF);
   body.set_image("dead_body.png");
-  body.set_text("This is keys!");
+  body.set_text("This is body!");
   
   ItemObject dirt = new ItemObject("Dirt");
   dirt.set_position(new PVector (150 * UF, 50 * UF));
@@ -127,6 +138,13 @@ void setup(SceneManager sceneManager)
   catacombs_to_pillar_room.set_width(50 * UF);
   catacombs_to_pillar_room.set_text("Go to pillar_room");
   
+  LockObject locked_pillar_room = new LockObject("locked_hallway", locket, catacombs_to_pillar_room);
+  locked_pillar_room.set_image("locked_door.png");
+  locked_pillar_room.set_position(new PVector(250 * UF, 30 * UF));
+  locked_pillar_room.set_height(50 * UF);
+  locked_pillar_room.set_width(50 * UF);
+  locked_pillar_room.set_text("Leads to pillar room. Find a locket to unlock it!");
+  
   
   SceneChanger catacombs_to_candle_room = new SceneChanger("catacombs_to_candle_room", "candle_room");
   catacombs_to_candle_room.set_image("door.png");
@@ -137,7 +155,7 @@ void setup(SceneManager sceneManager)
   
   
   catacombs.add_object(locked_hallway);
-  catacombs.add_object(catacombs_to_pillar_room);
+  catacombs.add_object(locked_pillar_room);
   catacombs.add_object(catacombs_to_candle_room);
   
   //Hallway
@@ -283,7 +301,7 @@ void setup(SceneManager sceneManager)
   burial_room_to_hallway.set_position(new PVector(250 * UF, 30 * UF));
   burial_room_to_hallway.set_height(50 * UF);
   burial_room_to_hallway.set_width(50 * UF);
-  burial_room_to_hallway.set_text("Go to candle_room");
+  burial_room_to_hallway.set_text("Go to hallway");
   
   
   burial_room.add_object(body);

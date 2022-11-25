@@ -2,6 +2,7 @@ class Scene
 {
   private String ID;
   private PImage backgroundImage;
+  
   private ArrayList<GameObject> gameObjects;
   
   private ArrayList<GameObject> added_objects;
