@@ -23,7 +23,8 @@ class GameObject
   protected boolean has_cutscene = false;
   protected String play_cutscene_ID = ""; 
   
-  
+  public boolean is_true_memory = false;
+
   public GameObject() {}
   
   public GameObject(String name) 
@@ -36,6 +37,21 @@ class GameObject
     hasText = false;
     hasHoverImage = false;
     mouseIsHovering = false;
+  }
+  
+  public PVector get_position()
+  {
+    return position;
+  }
+  
+  public void set_dimensions_according_to_image()
+  {
+    if(!hasImage)
+    {
+      return;
+    }
+    set_height(gameObjectImage.height / 10 * UF);
+    set_width(gameObjectImage.width / 10 * UF);
   }
   
   public void set_cutscene_ID(String cutscene_ID)
@@ -116,7 +132,7 @@ class GameObject
   
   public void draw() 
   {
-    show_collision();
+    //show_collision();
     if(hasImage) 
     {
       if(mouseIsHovering && hasHoverImage) 

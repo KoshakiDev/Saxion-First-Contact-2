@@ -4,6 +4,7 @@ class ItemObject extends GameObject
   boolean in_inventory = false;
   private GameObject replacement;
   private boolean has_replacement;
+  boolean is_memory_item = false;
   
   
   public ItemObject(String ID) { super(ID); initial_position = new PVector(0, 0); }

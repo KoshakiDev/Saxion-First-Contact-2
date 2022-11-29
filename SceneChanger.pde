@@ -8,6 +8,11 @@ class SceneChanger extends GameObject
     this.nextSceneID = nextSceneID;
   }
   
+  public void change_next_scene(String nextSceneID)
+  {
+      this.nextSceneID = nextSceneID;
+  }
+  
   @Override
   public void mouseClicked() 
   {

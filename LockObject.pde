@@ -10,11 +10,18 @@ class LockObject extends GameObject
     this.replacement = replacement;
   }
   
+  public void change_replacement(GameObject replacement)
+  {
+    this.replacement = replacement;
+  }
+  
   public void mouseDragged()
   {
     super.mouseDragged();
+    
     if(mouseIsHovering && inventoryManager.contains_item(key_item) && chosen_item == key_item) 
     {
+      println(get_name());
       inventoryManager.remove_item(key_item);
       sceneManager.get_current_scene().remove_object(this);
       sceneManager.get_current_scene().add_object(replacement);

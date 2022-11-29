@@ -3,6 +3,8 @@ class InventoryManager
   private int icon_height = 50;
   private int icon_space = 25;
   private int icon_width = 50;
+  int memory_item_counter = 0;
+  boolean lock_check_collected_memories = false;
   private ArrayList<ItemObject> items;
   private ArrayList<ItemObject> removed_items;
   
@@ -15,6 +17,16 @@ class InventoryManager
   public void update()
   {
     clear_removed_items();
+    check_collected_memories();
+  }
+  
+  void check_collected_memories()
+  {
+    if(memory_item_counter == 8 && !lock_check_collected_memories)
+    {
+      start_end_sequence = true;
+      lock_check_collected_memories = true;
+    }
   }
   
   public void draw()
@@ -60,6 +72,10 @@ class InventoryManager
   // Add and Remove Methods
   public void add_item(ItemObject item) 
   {
+    if(item.is_memory_item)
+    {
+      memory_item_counter++;
+    }
     items.add(item);
     item.set_height(icon_height);
     item.set_width(icon_width);
