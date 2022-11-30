@@ -25,6 +25,7 @@ class GameObject
   
   public boolean is_true_memory = false;
 
+
   public GameObject() {}
   
   public GameObject(String name) 

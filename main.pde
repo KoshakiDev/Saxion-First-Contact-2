@@ -19,6 +19,7 @@ boolean start_end_sequence = false;
 boolean start_starting_sequence = false;
 
 int correct_memories = -1;
+SoundFile general_ambience;
 
 void settings()
 {
@@ -30,6 +31,8 @@ void setup()
   setup(sceneManager); //Check scene_setup
   end_setup();
   sound_manager.setup(this);
+  
+  SoundFile general_ambience = new SoundFile(this, "ambience");
 }
 
 // Main game loop

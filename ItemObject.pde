@@ -7,12 +7,20 @@ class ItemObject extends GameObject
   boolean is_memory_item = false;
   
   
+  private boolean has_sound = false;
+  private SoundFile pickup_sound;
+  
   public ItemObject(String ID) { super(ID); initial_position = new PVector(0, 0); }
   
   public void set_replacement_object(GameObject replacement) { has_replacement = true; this.replacement = replacement; }
   
   public void set_initial_position(PVector initial_position) { this.initial_position = initial_position; }
   
+  public void set_pickup_sound(String sound_path, PApplet context)
+  {
+    pickup_sound = new SoundFile (context, sound_path);
+    has_sound = true;
+  }
 
   void mouseClicked() 
   {
@@ -59,6 +67,14 @@ class ItemObject extends GameObject
   
   public void move_to_inventory()
   {
+    if(has_sound)
+    {
+      pickup_sound.play();
+    }
+    else
+    {
+      println("Warning: No sound found for ", get_name());
+    }
     in_inventory = true;
     inventoryManager.add_item(this);
     if(has_replacement) 

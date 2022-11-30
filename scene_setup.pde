@@ -187,6 +187,7 @@ void setup(SceneManager sceneManager)
   skull.set_text("Pick up skull");
   skull.set_cutscene_ID("skull");
   skull.is_memory_item = true;
+  skull.set_pickup_sound("sounds/pickup/stick_pickup.wav", this);
   
   ItemObject locket = new ItemObject("Locket");
   locket.set_position(new PVector (282 * UF, 129 * UF));
@@ -195,6 +196,7 @@ void setup(SceneManager sceneManager)
   locket.set_text("This is a locket!");
   locket.set_cutscene_ID("locket");
   locket.is_memory_item = true;
+  locket.set_pickup_sound("sounds/pickup/metal_pickup.wav", this);
   
   ItemObject teddy_bear = new ItemObject("Teddy Bear");
   teddy_bear.set_position(new PVector (288 * UF, 160 * UF));
@@ -203,6 +205,8 @@ void setup(SceneManager sceneManager)
   teddy_bear.set_text("This is a bear!");
   teddy_bear.set_cutscene_ID("teddy_bear");
   teddy_bear.is_memory_item = true;
+  teddy_bear.set_pickup_sound("sounds/pickup/teddy_bear_pickup.wav", this);
+  
   
   ItemObject wine_glass = new ItemObject("Wine Glass");
   wine_glass.set_position(new PVector (273 * UF, 152 * UF));
@@ -211,6 +215,8 @@ void setup(SceneManager sceneManager)
   wine_glass.set_text("Pick up glass shards");
   wine_glass.set_cutscene_ID("wine_glass");
   wine_glass.is_memory_item = true;
+  wine_glass.set_pickup_sound("sounds/pickup/glass_shards_pickup.wav", this);
+  
   
   ItemObject keys = new ItemObject("Keys");
   keys.set_position(new PVector(180 * UF, 160 * UF));
@@ -219,6 +225,8 @@ void setup(SceneManager sceneManager)
   keys.set_text("This is car keys!");
   keys.set_cutscene_ID("car_keys");
   keys.is_memory_item = true;
+  keys.set_pickup_sound("sounds/pickup/car_keys_pickup.wav", this);
+  
   
   ItemObject body = new ItemObject("Body");
   body.set_position(new PVector(195 * UF, 86 * UF));
@@ -227,6 +235,8 @@ void setup(SceneManager sceneManager)
   body.set_text("This is body!");
   body.set_cutscene_ID("body");
   body.is_memory_item = true;
+  body.set_pickup_sound("sounds/pickup/axe_pickup.wav", this);
+  
   
   ItemObject dirt = new ItemObject("Dirt");
   dirt.set_position(new PVector (226 * UF, 115 * UF));
@@ -235,6 +245,8 @@ void setup(SceneManager sceneManager)
   dirt.set_text("This is dirt!");
   dirt.set_cutscene_ID("dirt");
   dirt.is_memory_item = true;
+  dirt.set_pickup_sound("sounds/pickup/dirt_pickup.wav", this);
+  
   
   ItemObject movie = new ItemObject("Movie Memory");
   movie.set_position(new PVector (150 * UF, 50 * UF));
@@ -253,6 +265,7 @@ void setup(SceneManager sceneManager)
   cloth.set_image("items/cloth.png");
   cloth.set_dimensions_according_to_image();
   cloth.set_text("This is cloth!");
+  cloth.set_pickup_sound("sounds/pickup/cloth_pickup.wav", this);
   
 
   
@@ -261,22 +274,24 @@ void setup(SceneManager sceneManager)
   spoon.set_image("items/spoon.png");
   spoon.set_dimensions_according_to_image();
   spoon.set_text("This is spoon!");
+  spoon.set_pickup_sound("sounds/pickup/spoon_pickup.wav", this);
+
   
   ItemObject crate = new ItemObject("Crate");
   crate.set_position(new PVector (334 * UF, 142 * UF));
   crate.set_image("items/crate.png");
   crate.set_dimensions_according_to_image();  
   crate.set_text("This is crate!");
-  
+  crate.set_pickup_sound("sounds/pickup/wooden_crate_pickup.wav", this);
 
-  
   
   ItemObject stick = new ItemObject("Stick");
   stick.set_position(new PVector (210 * UF, 70 * UF));
   stick.set_image("items/stick.png");
   stick.set_dimensions_according_to_image();
   stick.set_text("Stick");
-  
+  stick.set_pickup_sound("sounds/pickup/stick_pickup.wav", this);
+    
 
   
   ItemObject screwdriver = new ItemObject("Screwdriver");
@@ -284,6 +299,7 @@ void setup(SceneManager sceneManager)
   screwdriver.set_image("items/screwdriver.png");
   screwdriver.set_dimensions_according_to_image();
   screwdriver.set_text("Screwdriver");
+  screwdriver.set_pickup_sound("sounds/pickup/axe_pickup.wav", this);
   
 
   
@@ -292,6 +308,7 @@ void setup(SceneManager sceneManager)
   axe.set_image("items/axe.png");
   axe.set_dimensions_according_to_image();
   axe.set_text("Axe");
+  axe.set_pickup_sound("sounds/pickup/axe_pickup.wav", this);
   
   
   ItemObject metal = new ItemObject("Sharp Metal");
@@ -299,13 +316,13 @@ void setup(SceneManager sceneManager)
   metal.set_image("items/sharp_metal.png");
   metal.set_dimensions_according_to_image();
   metal.set_text("Sharp Metal");
+  metal.set_pickup_sound("sounds/pickup/metal_pickup.wav", this);
   
 
   ItemObject final_key = new ItemObject("Exit Key");
   final_key.set_position(new PVector (150 * UF, 50 * UF));
   final_key.set_height(75 * UF);
   final_key.set_width(75 * UF);
-  final_key.set_image("car_keys.png");
   final_key.set_text("This is the key to the exit!");
 
   
@@ -315,42 +332,60 @@ void setup(SceneManager sceneManager)
   locked_skull.set_position(new PVector(207 * UF, 95 * UF));
   locked_skull.set_dimensions_according_to_image();
   locked_skull.set_text("The skull is stuck to the wall, use a sharp piece of metal to get it out of there.");
+  locked_skull.set_accepted_sound("sounds/approved.wav", this);
+  locked_skull.set_denied_sound("sounds/denied.wav", this);
   
   LockObject locked_wine_glass = new LockObject("locked_wine_glass", cloth, wine_glass);
   locked_wine_glass.set_image("items/wine_glass.png");
   locked_wine_glass.set_position(new PVector(273 * UF, 152 * UF));
   locked_wine_glass.set_dimensions_according_to_image();
   locked_wine_glass.set_text("The glass is broken and might cut your finger if you pick it up, get a piece of cloth. ");
+  locked_wine_glass.set_accepted_sound("sounds/approved.wav", this);
+  locked_wine_glass.set_denied_sound("sounds/denied.wav", this);
   
   LockObject locked_dirt = new LockObject("locked_dirt", spoon, dirt);
   locked_dirt.set_image("items/dirt.png");
   locked_dirt.set_position(new PVector(226 * UF, 115 * UF));
   locked_dirt.set_dimensions_according_to_image();
   locked_dirt.set_text("The ground is wet, you don't want to get sick to get the dirt, get a spoon that is left behind. ");
+  locked_dirt.set_accepted_sound("sounds/approved.wav", this);
+  locked_dirt.set_denied_sound("sounds/denied.wav", this);
+  
   
   LockObject locked_locket = new LockObject("locked_locket", screwdriver, locket);
   locked_locket.set_image("items/locket.png");
   locked_locket.set_position(new PVector(282 * UF, 129 * UF));
   locked_locket.set_dimensions_according_to_image();
   locked_locket.set_text("The Locket is stuck in an old oil lamp, you need a screwdriver to open it. ");
+  locked_locket.set_accepted_sound("sounds/approved.wav", this);
+  locked_locket.set_denied_sound("sounds/denied.wav", this);
+  
   
   LockObject locked_body = new LockObject("locked_body", axe, body);
   locked_body.set_image("items/body.png");
   locked_body.set_position(new PVector(195 * UF, 86 * UF));
   locked_body.set_dimensions_according_to_image();
   locked_body.set_text("The body is put into a hole in the wall, you need an axe to make the hole bigger");
+  locked_body.set_accepted_sound("sounds/approved.wav", this);
+  locked_body.set_denied_sound("sounds/denied.wav", this);
+  
   
   LockObject locked_keys = new LockObject("locked_keys", stick, keys);
   locked_keys.set_image("items/car_keys.png");
   locked_keys.set_position(new PVector(180 * UF, 37 * UF));
   locked_keys.set_dimensions_according_to_image();
   locked_keys.set_text("The car keys are in a bowl that is full of dangerous animals, get a small stick to get it out of there.");
+  locked_keys.set_accepted_sound("sounds/approved.wav", this);
+  locked_keys.set_denied_sound("sounds/denied.wav", this);
+  
   
   LockObject locked_teddy_bear = new LockObject("locked_teddy_bear", crate, teddy_bear);
   locked_teddy_bear.set_image("items/teddy_bear.png");
   locked_teddy_bear.set_position(new PVector(288 * UF, 37 * UF));
   locked_teddy_bear.set_dimensions_according_to_image();
   locked_teddy_bear.set_text("The teddy bear is high up, get something to stand up on (a crate or something)");
+  locked_teddy_bear.set_accepted_sound("sounds/approved.wav", this);
+  locked_teddy_bear.set_denied_sound("sounds/denied.wav", this);
   
   
   
@@ -358,6 +393,7 @@ void setup(SceneManager sceneManager)
   //Scene talk_to_sister = new Scene("sister", "temp_sister.jpeg");
   
   Scene title_screen = new Scene("title_screen", "locations/church.png");
+  
   Scene catacombs = new Scene("catacombs", "locations/catacombs.png");
   Scene hallway = new Scene("hallway", "locations/hallway.png");
   Scene religious_room = new Scene("religious_room", "locations/religious_room.png");
@@ -366,6 +402,29 @@ void setup(SceneManager sceneManager)
   Scene candle_room = new Scene("candle_room", "locations/candle_room.png");
   Scene pillar_room = new Scene("pillar_room", "locations/pillar_room.png");
   Scene crypt_entrance = new Scene("crypt_entrance", "locations/crypt_entrance.png");
+  
+  //catacombs.set_ambience_sound("sounds/ambience/catacombs_ambience_1.wav", this);
+  //println("catacombs ambience loaded");
+  
+  //hallway.set_ambience_sound("sounds/ambience/hallway_ambience_1.wav", this);
+  //println("hallway ambience loaded");
+  
+  //religious_room.set_ambience_sound("sounds/ambience/religious_room_ambience_1.wav", this);
+  //println("relbiguso ambience loaded");
+  
+  //burial_room.set_ambience_sound("sounds/ambience/burial_room_ambience_1.wav", this);
+  //println("bural ambience loaded");
+  
+  //skull_room.set_ambience_sound("sounds/ambience/creepy_child_room_ambience_1.wav", this);
+  //println("skulrom ambience loaded");
+  
+  //candle_room.set_ambience_sound("sounds/ambience/candle_room_ambience_1.wav", this);
+  //println("canldeprom ambience loaded");
+  
+  //pillar_room.set_ambience_sound("sounds/ambience/pillar_room_ambience_1.wav", this);
+  //println("piller ambience loaded");
+  
+  println("all ambience loaded");
   
   //################3
   
@@ -384,7 +443,7 @@ void setup(SceneManager sceneManager)
   catacombs_to_hallway.set_height(80 * UF);
   catacombs_to_hallway.set_width(110 * UF);
   catacombs_to_hallway.set_text("Go forwards to the hallway");
-  
+  catacombs_to_hallway.set_transition_sound("sounds/default_click.wav", this);
   
   SceneChanger catacombs_to_pillar_room = new SceneChanger("catacombs_to_pillar_room", "pillar_room");
   catacombs_to_pillar_room.set_image("icons/arrowUp.png");
@@ -392,6 +451,7 @@ void setup(SceneManager sceneManager)
   catacombs_to_pillar_room.set_height(25 * UF);
   catacombs_to_pillar_room.set_width(25 * UF);
   catacombs_to_pillar_room.set_text("Go up to the pillars");
+  catacombs_to_pillar_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger catacombs_to_candle_room = new SceneChanger("catacombs_to_candle_room", "candle_room");
@@ -400,6 +460,8 @@ void setup(SceneManager sceneManager)
   catacombs_to_candle_room.set_height(25 * UF);
   catacombs_to_candle_room.set_width(25 * UF);
   catacombs_to_candle_room.set_text("Go to the right to the candle room");
+  catacombs_to_candle_room.set_transition_sound("sounds/default_click.wav", this);
+  
   
   catacombs.add_object(cloth);
   //catacombs.add_object(final_key);
@@ -414,6 +476,7 @@ void setup(SceneManager sceneManager)
   hallway_to_catacombs.set_height(25 * UF);
   hallway_to_catacombs.set_width(25 * UF);
   hallway_to_catacombs.set_text("Go back to the catacombs");
+  hallway_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger hallway_to_pillar_room = new SceneChanger("hallway_to_pillar_room", "pillar_room");
@@ -422,6 +485,7 @@ void setup(SceneManager sceneManager)
   hallway_to_pillar_room.set_height(25 * UF);
   hallway_to_pillar_room.set_width(25 * UF);
   hallway_to_pillar_room.set_text("Go up to the pillars");
+  hallway_to_pillar_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger hallway_to_skull_room = new SceneChanger("hallway_to_skull_room", "skull_room");
@@ -430,6 +494,7 @@ void setup(SceneManager sceneManager)
   hallway_to_skull_room.set_height(117 * UF);
   hallway_to_skull_room.set_width(86 * UF);
   hallway_to_skull_room.set_text("Enter the creepy child room");
+  hallway_to_skull_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   hallway.add_object(spoon);
@@ -449,6 +514,7 @@ void setup(SceneManager sceneManager)
   pillar_room_to_catacombs.set_height(25 * UF);
   pillar_room_to_catacombs.set_width(25 * UF);
   pillar_room_to_catacombs.set_text("Go to back to the catacombs");
+  pillar_room_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger pillar_room_to_hallway = new SceneChanger("pillar_room_to_hallway", "hallway");
@@ -457,6 +523,7 @@ void setup(SceneManager sceneManager)
   pillar_room_to_hallway.set_height(25 * UF);
   pillar_room_to_hallway.set_width(25 * UF);
   pillar_room_to_hallway.set_text("Go to down to the hallway");
+  pillar_room_to_hallway.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger pillar_room_to_religious_room = new SceneChanger("pillar_room_to_religious_room", "religious_room");
@@ -465,6 +532,7 @@ void setup(SceneManager sceneManager)
   pillar_room_to_religious_room.set_height(25 * UF);
   pillar_room_to_religious_room.set_width(25 * UF);
   pillar_room_to_religious_room.set_text("Go upstairs to the religious room");
+  pillar_room_to_religious_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   
@@ -483,6 +551,7 @@ void setup(SceneManager sceneManager)
   candle_room_to_burial_room.set_height(108 * UF);
   candle_room_to_burial_room.set_width(92 * UF);
   candle_room_to_burial_room.set_text("Go to burial room");
+  candle_room_to_burial_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger candle_room_to_catacombs = new SceneChanger("pillar_room_to_hallway", "catacombs");
@@ -491,6 +560,7 @@ void setup(SceneManager sceneManager)
   candle_room_to_catacombs.set_height(25 * UF);
   candle_room_to_catacombs.set_width(25 * UF);
   candle_room_to_catacombs.set_text("Go to back to the catacombs");
+  candle_room_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
   candle_room.add_object(locked_wine_glass);
@@ -506,6 +576,7 @@ void setup(SceneManager sceneManager)
   skull_room_to_burial_room.set_height(25 * UF);
   skull_room_to_burial_room.set_width(25 * UF);
   skull_room_to_burial_room.set_text("Go to the burial room");
+  skull_room_to_burial_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger skull_room_to_candle_room = new SceneChanger("skull_room_to_hallway", "hallway");
@@ -514,6 +585,7 @@ void setup(SceneManager sceneManager)
   skull_room_to_candle_room.set_height(25 * UF);
   skull_room_to_candle_room.set_width(25 * UF);
   skull_room_to_candle_room.set_text("Go back to hallway");
+  skull_room_to_candle_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   skull_room.add_object(locked_teddy_bear);
@@ -531,6 +603,8 @@ void setup(SceneManager sceneManager)
   religious_room_to_pillar_room.set_height(25 * UF);
   religious_room_to_pillar_room.set_width(25 * UF);
   religious_room_to_pillar_room.set_text("Go back to the pillars");
+  religious_room_to_pillar_room.set_transition_sound("sounds/default_click.wav", this);
+  
   
   SceneChanger religious_room_to_crypt_entrance = new SceneChanger("religious_room_to_crypt_entrance", "crypt_entrance");
   religious_room_to_crypt_entrance.set_image("blank.png");
@@ -538,6 +612,8 @@ void setup(SceneManager sceneManager)
   religious_room_to_crypt_entrance.set_height(50 * UF);
   religious_room_to_crypt_entrance.set_width(50 * UF);
   religious_room_to_crypt_entrance.set_text("Leave the dungeon once and for all!");
+  religious_room_to_crypt_entrance.set_transition_sound("sounds/default_click.wav", this);
+  
   
   LockObject locked_crypt_entrance = new LockObject("locked_crypt_entrance", final_key, religious_room_to_crypt_entrance);
   locked_crypt_entrance.set_image("icons/lock.png");
@@ -563,6 +639,7 @@ void setup(SceneManager sceneManager)
   burial_room_to_skull_room.set_height(25 * UF);
   burial_room_to_skull_room.set_width(25 * UF);
   burial_room_to_skull_room.set_text("Go to creepy child room");
+  burial_room_to_skull_room.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger burial_room_to_hallway = new SceneChanger("burial_room_to_candle_room", "candle_room");
@@ -571,6 +648,8 @@ void setup(SceneManager sceneManager)
   burial_room_to_hallway.set_height(25 * UF);
   burial_room_to_hallway.set_width(25 * UF);
   burial_room_to_hallway.set_text("Go back to the candle room");
+  burial_room_to_hallway.set_transition_sound("sounds/default_click.wav", this);
+  
   
   burial_room.add_object(stick);
   

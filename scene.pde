@@ -19,6 +19,7 @@ class Scene
     added_objects = new ArrayList<GameObject>();
   }
   
+  
   public void update() 
   {
     clear_removed_objects();
