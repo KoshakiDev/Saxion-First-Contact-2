@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 
 final int UF = 3;
 
@@ -9,6 +11,8 @@ GameObject chosen_item = new GameObject("");
 final CutsceneManager cutscene_manager = new CutsceneManager();
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
+final SoundManager sound_manager = new SoundManager();
+  
 
 Scene end_scene = new Scene();
 boolean start_end_sequence = false;
@@ -25,6 +29,7 @@ void setup()
 {
   setup(sceneManager); //Check scene_setup
   end_setup();
+  sound_manager.setup(this);
 }
 
 // Main game loop
@@ -113,6 +118,8 @@ void end_scene_loop()
   correct_memories = counter_true + counter_fake;
   
 }
+
+
 
 // Input-related
 void mouseMoved() 

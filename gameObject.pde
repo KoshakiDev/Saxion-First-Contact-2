@@ -189,7 +189,7 @@ class GameObject
   {
     text_width = textWidth(text) * 2;
     
-    float max_width = owidth;
+    float max_width = owidth * 3;
     
     float remaining = text_width - max_width;
     

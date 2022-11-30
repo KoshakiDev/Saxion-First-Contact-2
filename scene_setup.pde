@@ -305,7 +305,7 @@ void setup(SceneManager sceneManager)
   final_key.set_position(new PVector (150 * UF, 50 * UF));
   final_key.set_height(75 * UF);
   final_key.set_width(75 * UF);
-  final_key.set_image("keys.png");
+  final_key.set_image("car_keys.png");
   final_key.set_text("This is the key to the exit!");
 
   
