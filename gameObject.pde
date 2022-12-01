@@ -16,7 +16,7 @@ class GameObject
   private boolean hasText;
   private String text;
   private boolean displayText;
-  private float text_size = 12; 
+  private float text_size = 16; 
   private float text_width;
   private float textHeight;
   
@@ -118,9 +118,10 @@ class GameObject
   {
     pushMatrix();
     PVector text_position = new PVector(position.x + owidth / 2, position.y);
+    
     fill(255);
     rectMode(CENTER);
-    rect(text_position.x, text_position.y, text_width, textHeight, 8);
+    rect(text_position.x, text_position.y, text_width + 25, textHeight, 8);
     popMatrix();
     
     pushMatrix();
@@ -203,7 +204,7 @@ class GameObject
     
     while(remaining > max_width)
     {
-      this.textHeight += 30;
+      this.textHeight += text_size;
       remaining -= max_width;
     }
   }

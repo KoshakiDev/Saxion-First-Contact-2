@@ -4,10 +4,9 @@ void end_setup()
   
   
   SceneChanger complete_game = new SceneChanger("complete_game", "title_screen");
-  complete_game.set_position(new PVector (wwidth / 2 - 50 * UF, 25 * UF));
-  complete_game.set_height(10 * UF);
-  complete_game.set_width(100 * UF);
-  complete_game.set_image("icons/medal1.png");
+  complete_game.set_image("icons/finish.png");
+  complete_game.set_dimensions_according_to_image();
+  complete_game.set_position(new PVector (wwidth / 2 - complete_game.owidth / 2, 25 * UF));
   complete_game.set_text("Sort memories first! Click here when you are done");
   
   
@@ -98,15 +97,6 @@ void end_setup()
 
 void setup(SceneManager sceneManager)
 { 
-
-  String[] test_1_image_paths = new String[3];
-  
-  test_1_image_paths[0] = "frame_1.png";
-  test_1_image_paths[1] = "frame_2.png";
-  test_1_image_paths[2] = "frame_3.png";
-  
-  Cutscene test_1 = new Cutscene("test_1", test_1_image_paths);
-  
   String[] good_end_image_paths = new String[1];
   good_end_image_paths[0] = "good_end.png";
   Cutscene good_end = new Cutscene("good_end", good_end_image_paths);
@@ -176,7 +166,6 @@ void setup(SceneManager sceneManager)
   cutscene_manager.add_cutscene(movie_memory); 
   cutscene_manager.add_cutscene(car_keys_memory); 
   cutscene_manager.add_cutscene(intro); 
-  cutscene_manager.add_cutscene(test_1); 
   
 
   // Memory objects
@@ -218,7 +207,7 @@ void setup(SceneManager sceneManager)
   wine_glass.set_pickup_sound("sounds/pickup/glass_shards_pickup.wav", this);
   
   
-  ItemObject keys = new ItemObject("Keys");
+  ItemObject keys = new ItemObject("Car Keys");
   keys.set_position(new PVector(180 * UF, 160 * UF));
   keys.set_image("items/car_keys.png");
   keys.set_dimensions_according_to_image();
@@ -331,7 +320,7 @@ void setup(SceneManager sceneManager)
   locked_skull.set_image("items/skull.png");
   locked_skull.set_position(new PVector(207 * UF, 95 * UF));
   locked_skull.set_dimensions_according_to_image();
-  locked_skull.set_text("The skull is stuck to the wall, use a sharp piece of metal to get it out of there.");
+  locked_skull.set_text("The skull is stuck to the wall, I need something sharp to get it off.");
   locked_skull.set_accepted_sound("sounds/approved.wav", this);
   locked_skull.set_denied_sound("sounds/denied.wav", this);
   
@@ -339,7 +328,7 @@ void setup(SceneManager sceneManager)
   locked_wine_glass.set_image("items/wine_glass.png");
   locked_wine_glass.set_position(new PVector(273 * UF, 152 * UF));
   locked_wine_glass.set_dimensions_according_to_image();
-  locked_wine_glass.set_text("The glass is broken and might cut your finger if you pick it up, get a piece of cloth. ");
+  locked_wine_glass.set_text("That glass looks very sharp, maybe there is something around that could protect my hands");
   locked_wine_glass.set_accepted_sound("sounds/approved.wav", this);
   locked_wine_glass.set_denied_sound("sounds/denied.wav", this);
   
@@ -347,7 +336,7 @@ void setup(SceneManager sceneManager)
   locked_dirt.set_image("items/dirt.png");
   locked_dirt.set_position(new PVector(226 * UF, 115 * UF));
   locked_dirt.set_dimensions_according_to_image();
-  locked_dirt.set_text("The ground is wet, you don't want to get sick to get the dirt, get a spoon that is left behind. ");
+  locked_dirt.set_text("I don't want to get my hands dirty, there could be something around that would let me pick it up");
   locked_dirt.set_accepted_sound("sounds/approved.wav", this);
   locked_dirt.set_denied_sound("sounds/denied.wav", this);
   
@@ -356,7 +345,7 @@ void setup(SceneManager sceneManager)
   locked_locket.set_image("items/locket.png");
   locked_locket.set_position(new PVector(282 * UF, 129 * UF));
   locked_locket.set_dimensions_according_to_image();
-  locked_locket.set_text("The Locket is stuck in an old oil lamp, you need a screwdriver to open it. ");
+  locked_locket.set_text("The Locket is stuck in an old oil lamp, maybe there is an instrument around to get it out.");
   locked_locket.set_accepted_sound("sounds/approved.wav", this);
   locked_locket.set_denied_sound("sounds/denied.wav", this);
   
@@ -365,7 +354,7 @@ void setup(SceneManager sceneManager)
   locked_body.set_image("items/body.png");
   locked_body.set_position(new PVector(195 * UF, 86 * UF));
   locked_body.set_dimensions_according_to_image();
-  locked_body.set_text("The body is put into a hole in the wall, you need an axe to make the hole bigger");
+  locked_body.set_text("The body is put into a hole in the wall, I should find something to make the hole big enough to get the body through");
   locked_body.set_accepted_sound("sounds/approved.wav", this);
   locked_body.set_denied_sound("sounds/denied.wav", this);
   
@@ -374,7 +363,7 @@ void setup(SceneManager sceneManager)
   locked_keys.set_image("items/car_keys.png");
   locked_keys.set_position(new PVector(180 * UF, 37 * UF));
   locked_keys.set_dimensions_according_to_image();
-  locked_keys.set_text("The car keys are in a bowl that is full of dangerous animals, get a small stick to get it out of there.");
+  locked_keys.set_text("The car keys are out of reach, I may be able to get them off the hook.");
   locked_keys.set_accepted_sound("sounds/approved.wav", this);
   locked_keys.set_denied_sound("sounds/denied.wav", this);
   
@@ -383,7 +372,7 @@ void setup(SceneManager sceneManager)
   locked_teddy_bear.set_image("items/teddy_bear.png");
   locked_teddy_bear.set_position(new PVector(288 * UF, 37 * UF));
   locked_teddy_bear.set_dimensions_according_to_image();
-  locked_teddy_bear.set_text("The teddy bear is high up, get something to stand up on (a crate or something)");
+  locked_teddy_bear.set_text("The teddy bear is high up, maybe I can reach it if I was a bit higher up");
   locked_teddy_bear.set_accepted_sound("sounds/approved.wav", this);
   locked_teddy_bear.set_denied_sound("sounds/denied.wav", this);
   
@@ -429,13 +418,13 @@ void setup(SceneManager sceneManager)
   //################3
   
   SceneChanger begin_game = new SceneChanger("begin", "catacombs");
-  begin_game.set_image("icons/arrowUp.png");
-  begin_game.set_position(new PVector(127 * UF, 40 * UF));
-  begin_game.set_height(25 * UF);
-  begin_game.set_width(25 * UF);
+  begin_game.set_image("icons/start.png");
+  begin_game.set_dimensions_according_to_image();
+  begin_game.set_position(new PVector(wwidth / 2 - begin_game.owidth / 2, wheight / 2));
   begin_game.set_text("Press to begin the game");
   title_screen.add_object(begin_game);
   
+  //println("hello");
   
   SceneChanger catacombs_to_hallway = new SceneChanger("catacombs_to_hallway", "hallway");
   catacombs_to_hallway.set_image("blank.png");
@@ -456,7 +445,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger catacombs_to_candle_room = new SceneChanger("catacombs_to_candle_room", "candle_room");
   catacombs_to_candle_room.set_image("icons/arrowRight.png");
-  catacombs_to_candle_room.set_position(new PVector(337 * UF, 70 * UF));
+  catacombs_to_candle_room.set_position(new PVector(327 * UF, 70 * UF));
   catacombs_to_candle_room.set_height(25 * UF);
   catacombs_to_candle_room.set_width(25 * UF);
   catacombs_to_candle_room.set_text("Go to the right to the candle room");
@@ -472,7 +461,7 @@ void setup(SceneManager sceneManager)
   //Hallway
   SceneChanger hallway_to_catacombs = new SceneChanger("hallway_to_catacombs", "catacombs");
   hallway_to_catacombs.set_image("icons/arrowLeft.png");
-  hallway_to_catacombs.set_position(new PVector(13 * UF, 83 * UF));
+  hallway_to_catacombs.set_position(new PVector(22 * UF, 83 * UF));
   hallway_to_catacombs.set_height(25 * UF);
   hallway_to_catacombs.set_width(25 * UF);
   hallway_to_catacombs.set_text("Go back to the catacombs");
@@ -481,7 +470,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger hallway_to_pillar_room = new SceneChanger("hallway_to_pillar_room", "pillar_room");
   hallway_to_pillar_room.set_image("icons/arrowRight.png");
-  hallway_to_pillar_room.set_position(new PVector(355 * UF, 84 * UF));
+  hallway_to_pillar_room.set_position(new PVector(327 * UF, 84 * UF));
   hallway_to_pillar_room.set_height(25 * UF);
   hallway_to_pillar_room.set_width(25 * UF);
   hallway_to_pillar_room.set_text("Go up to the pillars");
@@ -510,7 +499,7 @@ void setup(SceneManager sceneManager)
   //Pillar Room 
   SceneChanger pillar_room_to_catacombs = new SceneChanger("pillar_room_to_catacombs", "catacombs");
   pillar_room_to_catacombs.set_image("icons/arrowLeft.png");
-  pillar_room_to_catacombs.set_position(new PVector(9 * UF, 130 * UF));
+  pillar_room_to_catacombs.set_position(new PVector(22 * UF, 130 * UF));
   pillar_room_to_catacombs.set_height(25 * UF);
   pillar_room_to_catacombs.set_width(25 * UF);
   pillar_room_to_catacombs.set_text("Go to back to the catacombs");
@@ -519,7 +508,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger pillar_room_to_hallway = new SceneChanger("pillar_room_to_hallway", "hallway");
   pillar_room_to_hallway.set_image("icons/arrowDown.png");
-  pillar_room_to_hallway.set_position(new PVector(332 * UF, 140 * UF));
+  pillar_room_to_hallway.set_position(new PVector(327 * UF, 140 * UF));
   pillar_room_to_hallway.set_height(25 * UF);
   pillar_room_to_hallway.set_width(25 * UF);
   pillar_room_to_hallway.set_text("Go to down to the hallway");
@@ -528,7 +517,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger pillar_room_to_religious_room = new SceneChanger("pillar_room_to_religious_room", "religious_room");
   pillar_room_to_religious_room.set_image("icons/arrowUp.png");
-  pillar_room_to_religious_room.set_position(new PVector(332 * UF, 30 * UF));
+  pillar_room_to_religious_room.set_position(new PVector(327 * UF, 30 * UF));
   pillar_room_to_religious_room.set_height(25 * UF);
   pillar_room_to_religious_room.set_width(25 * UF);
   pillar_room_to_religious_room.set_text("Go upstairs to the religious room");
@@ -556,7 +545,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger candle_room_to_catacombs = new SceneChanger("pillar_room_to_hallway", "catacombs");
   candle_room_to_catacombs.set_image("icons/arrowLeft.png");
-  candle_room_to_catacombs.set_position(new PVector(9 * UF, 84 * UF));
+  candle_room_to_catacombs.set_position(new PVector(22 * UF, 84 * UF));
   candle_room_to_catacombs.set_height(25 * UF);
   candle_room_to_catacombs.set_width(25 * UF);
   candle_room_to_catacombs.set_text("Go to back to the catacombs");
@@ -572,7 +561,7 @@ void setup(SceneManager sceneManager)
   //Skull Room
   SceneChanger skull_room_to_burial_room = new SceneChanger("skull_room_to_burial_room", "burial_room");
   skull_room_to_burial_room.set_image("icons/arrowLeft.png");
-  skull_room_to_burial_room.set_position(new PVector(6 * UF, 93 * UF));
+  skull_room_to_burial_room.set_position(new PVector(22 * UF, 93 * UF));
   skull_room_to_burial_room.set_height(25 * UF);
   skull_room_to_burial_room.set_width(25 * UF);
   skull_room_to_burial_room.set_text("Go to the burial room");
@@ -581,7 +570,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger skull_room_to_candle_room = new SceneChanger("skull_room_to_hallway", "hallway");
   skull_room_to_candle_room.set_image("icons/arrowRight.png");
-  skull_room_to_candle_room.set_position(new PVector(350 * UF, 93 * UF));
+  skull_room_to_candle_room.set_position(new PVector(327 * UF, 93 * UF));
   skull_room_to_candle_room.set_height(25 * UF);
   skull_room_to_candle_room.set_width(25 * UF);
   skull_room_to_candle_room.set_text("Go back to hallway");
@@ -599,7 +588,7 @@ void setup(SceneManager sceneManager)
   //Religious Room
   SceneChanger religious_room_to_pillar_room = new SceneChanger("religious_room_to_pillar_room", "pillar_room");
   religious_room_to_pillar_room.set_image("icons/arrowLeft.png");
-  religious_room_to_pillar_room.set_position(new PVector(6 * UF, 103 * UF));
+  religious_room_to_pillar_room.set_position(new PVector(22 * UF, 103 * UF));
   religious_room_to_pillar_room.set_height(25 * UF);
   religious_room_to_pillar_room.set_width(25 * UF);
   religious_room_to_pillar_room.set_text("Go back to the pillars");
@@ -608,19 +597,21 @@ void setup(SceneManager sceneManager)
   
   SceneChanger religious_room_to_crypt_entrance = new SceneChanger("religious_room_to_crypt_entrance", "crypt_entrance");
   religious_room_to_crypt_entrance.set_image("blank.png");
-  religious_room_to_crypt_entrance.set_position(new PVector(250 * UF, 30 * UF));
-  religious_room_to_crypt_entrance.set_height(50 * UF);
-  religious_room_to_crypt_entrance.set_width(50 * UF);
+  religious_room_to_crypt_entrance.set_position(new PVector(327 * UF, 30 * UF));
+  religious_room_to_crypt_entrance.set_height(25 * UF);
+  religious_room_to_crypt_entrance.set_width(25 * UF);
   religious_room_to_crypt_entrance.set_text("Leave the dungeon once and for all!");
   religious_room_to_crypt_entrance.set_transition_sound("sounds/default_click.wav", this);
   
   
   LockObject locked_crypt_entrance = new LockObject("locked_crypt_entrance", final_key, religious_room_to_crypt_entrance);
   locked_crypt_entrance.set_image("icons/lock.png");
-  locked_crypt_entrance.set_position(new PVector(351 * UF, 103 * UF));
+  locked_crypt_entrance.set_position(new PVector(327 * UF, 103 * UF));
   locked_crypt_entrance.set_height(25 * UF);
   locked_crypt_entrance.set_width(25 * UF);
   locked_crypt_entrance.set_text("The exit from this hell hole! You need a key!");
+  locked_crypt_entrance.set_accepted_sound("sounds/approved.wav", this);
+  locked_crypt_entrance.set_denied_sound("sounds/denied.wav", this);
   
   
   
@@ -635,7 +626,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger burial_room_to_skull_room = new SceneChanger("burial_room_to_skull_room", "skull_room");
   burial_room_to_skull_room.set_image("icons/arrowRight.png");
-  burial_room_to_skull_room.set_position(new PVector(353 * UF, 105 * UF));
+  burial_room_to_skull_room.set_position(new PVector(327 * UF, 105 * UF));
   burial_room_to_skull_room.set_height(25 * UF);
   burial_room_to_skull_room.set_width(25 * UF);
   burial_room_to_skull_room.set_text("Go to creepy child room");
@@ -644,7 +635,7 @@ void setup(SceneManager sceneManager)
   
   SceneChanger burial_room_to_hallway = new SceneChanger("burial_room_to_candle_room", "candle_room");
   burial_room_to_hallway.set_image("icons/arrowLeft.png");
-  burial_room_to_hallway.set_position(new PVector(16 * UF, 105 * UF));
+  burial_room_to_hallway.set_position(new PVector(22 * UF, 105 * UF));
   burial_room_to_hallway.set_height(25 * UF);
   burial_room_to_hallway.set_width(25 * UF);
   burial_room_to_hallway.set_text("Go back to the candle room");

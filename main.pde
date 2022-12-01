@@ -21,6 +21,9 @@ boolean start_starting_sequence = false;
 int correct_memories = -1;
 SoundFile general_ambience;
 
+PFont default_font;
+
+
 void settings()
 {
   size(wwidth, wheight);
@@ -28,6 +31,10 @@ void settings()
 
 void setup()
 {
+  //default_font = createFont("gothic-bitmap.ttf", 128);
+  default_font = createFont("upheavtt.ttf", 128);
+  textFont(default_font);
+  
   setup(sceneManager); //Check scene_setup
   end_setup();
   sound_manager.setup(this);
