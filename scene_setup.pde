@@ -97,63 +97,110 @@ void end_setup()
 
 void setup(SceneManager sceneManager)
 { 
-  String[] good_end_image_paths = new String[1];
-  good_end_image_paths[0] = "good_end.png";
+  String[] good_end_image_paths = new String[4];
+  good_end_image_paths[0] = "memories/good_end/end_1.png";
+  good_end_image_paths[1] = "memories/good_end/end_2.png";
+  good_end_image_paths[2] = "memories/good_end/end_3.png";
+  good_end_image_paths[3] = "memories/good_end/end_4.png";
   Cutscene good_end = new Cutscene("good_end", good_end_image_paths);
   
-  String[] bad_end_image_paths = new String[1];
-  bad_end_image_paths[0] = "bad_end.png";
+  String[] bad_end_image_paths = new String[4];
+  bad_end_image_paths[0] = "memories/bad_end/end_1.png";
+  bad_end_image_paths[1] = "memories/bad_end/end_2.png";
+  bad_end_image_paths[2] = "memories/bad_end/end_3.png";
+  bad_end_image_paths[3] = "memories/bad_end/end_4.png";
+  
   Cutscene bad_end = new Cutscene("bad_end", bad_end_image_paths);
   
-  String[] neutral_end_image_paths = new String[1];
-  neutral_end_image_paths[0] = "neutral_end.png";
-  Cutscene neutral_end = new Cutscene("neutral_end", neutral_end_image_paths);
+  //String[] neutral_end_image_paths = new String[1];
+  //neutral_end_image_paths[0] = "neutral_end.png";
+  //Cutscene neutral_end = new Cutscene("neutral_end", neutral_end_image_paths);
   
   
-  String[] intro_image_paths = new String[1];
-  intro_image_paths[0] = "intro_1.png";
+  String[] intro_image_paths = new String[13];
+  intro_image_paths[0] = "memories/intro/1.png";
+  intro_image_paths[1] = "memories/intro/2.png";
+  intro_image_paths[2] = "memories/intro/3.png";
+  intro_image_paths[3] = "memories/intro/4.png";
+  intro_image_paths[4] = "memories/intro/5.png";
+  intro_image_paths[5] = "memories/intro/6.png";
+  intro_image_paths[6] = "memories/intro/7.png";
+  intro_image_paths[7] = "memories/intro/8.png";
+  intro_image_paths[8] = "memories/intro/9.png";
+  intro_image_paths[9] = "memories/intro/10.png";
+  intro_image_paths[10] = "memories/movie/movie_1.png";
+  intro_image_paths[11] = "memories/movie/movie_2.png";
+  intro_image_paths[12] = "memories/movie/movie_3.png";
+  
   Cutscene intro = new Cutscene("intro", intro_image_paths);
   
   
-  String[] car_keys_image_paths = new String[1];
+  String[] car_keys_image_paths = new String[2];
   car_keys_image_paths[0] = "memories/car keys/car_keys_1.png";
+  car_keys_image_paths[1] = "memories/car keys/car_keys_2.png";
   Cutscene car_keys_memory = new Cutscene("car_keys", car_keys_image_paths);
   
-  String[] movie_image_paths = new String[1];
+  
+  String[] movie_image_paths = new String[3];
   movie_image_paths[0] = "memories/movie/movie_1.png";
+  movie_image_paths[1] = "memories/movie/movie_2.png";
+  movie_image_paths[2] = "memories/movie/movie_3.png";
   Cutscene movie_memory = new Cutscene("movie", movie_image_paths);
+
+
   
-  String[] wine_glass_image_paths = new String[1];
+  String[] wine_glass_image_paths = new String[2];
   wine_glass_image_paths[0] = "memories/wine glass/wine_glass_1.png";
+  wine_glass_image_paths[1] = "memories/wine glass/wine_glass_2.png";
   Cutscene wine_glass_memory = new Cutscene("wine_glass", wine_glass_image_paths);
+
+
   
-  String[] dirt_image_paths = new String[1];
+  String[] dirt_image_paths = new String[3];
   dirt_image_paths[0] = "memories/dirt/dirt_1.png";
+  dirt_image_paths[1] = "memories/dirt/dirt_2.png";
+  dirt_image_paths[2] = "memories/dirt/dirt_3.png";
   Cutscene dirt_memory = new Cutscene("dirt", dirt_image_paths);
+
+
   
-  String[] teddy_bear_image_paths = new String[1];
+  String[] teddy_bear_image_paths = new String[2];
   teddy_bear_image_paths[0] = "memories/teddy bear/teddy_bear_1.png";
+  teddy_bear_image_paths[1] = "memories/teddy bear/teddy_bear_2.png";
   Cutscene teddy_bear_memory = new Cutscene("teddy_bear", teddy_bear_image_paths);
+
+
   
-  String[] skull_image_paths = new String[1];
+  String[] skull_image_paths = new String[4];
   skull_image_paths[0] = "memories/skull/skull_1.png";
+  skull_image_paths[1] = "memories/skull/skull_2.png";
+  skull_image_paths[2] = "memories/skull/skull_3.png";
+  skull_image_paths[3] = "memories/skull/skull_4.png";
   Cutscene skull_memory = new Cutscene("skull", skull_image_paths);
   
-  String[] body_image_paths = new String[1];
+    println("hello");
+
+  
+  String[] body_image_paths = new String[2];
   body_image_paths[0] = "memories/body/body_1.png";
+  body_image_paths[1] = "memories/body/body_2.png";
   Cutscene body_memory = new Cutscene("body", body_image_paths);
   
-  String[] locket_image_paths = new String[1];
+  String[] locket_image_paths = new String[2];
   locket_image_paths[0] = "memories/locket/locket_1.png";
+  locket_image_paths[1] = "memories/locket/locket_2.png";
   Cutscene locket_memory = new Cutscene("locket", locket_image_paths);
   
-  String[] sister_found_key_image_paths = new String[1];
-  sister_found_key_image_paths[0] = "memories/sister_found_key/sister_found_key_1.png";
+  String[] sister_found_key_image_paths = new String[4];
+  sister_found_key_image_paths[0] = "memories/sister_found_key/1.png";
+  sister_found_key_image_paths[1] = "memories/sister_found_key/2.png";
+  sister_found_key_image_paths[2] = "memories/sister_found_key/3.png";
+  sister_found_key_image_paths[3] = "memories/sister_found_key/end_1.png";
   Cutscene sister_found_key = new Cutscene("sister_found_key", sister_found_key_image_paths);
   
   cutscene_manager.add_cutscene(good_end);
   cutscene_manager.add_cutscene(bad_end);
-  cutscene_manager.add_cutscene(neutral_end);
+  //cutscene_manager.add_cutscene(neutral_end);
   
   
   cutscene_manager.add_cutscene(sister_found_key);
