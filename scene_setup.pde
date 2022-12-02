@@ -7,7 +7,7 @@ void end_setup()
   complete_game.set_image("icons/finish.png");
   complete_game.set_dimensions_according_to_image();
   complete_game.set_position(new PVector (wwidth / 2 - complete_game.owidth / 2, 25 * UF));
-  complete_game.set_text("Sort memories first! Click here when you are done");
+  complete_game.set_text("Sort memories! There are 4 false and 4 true memories! Click here when you are done");
   
   
   DragObject skull = new DragObject("Skull");
@@ -97,11 +97,26 @@ void end_setup()
 
 void setup(SceneManager sceneManager)
 { 
-  String[] good_end_image_paths = new String[4];
-  good_end_image_paths[0] = "memories/good_end/end_1.png";
-  good_end_image_paths[1] = "memories/good_end/end_2.png";
-  good_end_image_paths[2] = "memories/good_end/end_3.png";
-  good_end_image_paths[3] = "memories/good_end/end_4.png";
+  String[] good_end_image_paths = new String[18];
+  good_end_image_paths[0] = "memories/good_end/end_01.png";
+  good_end_image_paths[1] = "memories/good_end/end_02.png";
+  good_end_image_paths[2] = "memories/good_end/end_03.png";
+  good_end_image_paths[3] = "memories/good_end/end_04.png";
+  good_end_image_paths[4] = "memories/good_end/end_05.png";
+  good_end_image_paths[5] = "memories/good_end/end_06.png";
+  good_end_image_paths[6] = "memories/good_end/end_07.png";
+  good_end_image_paths[7] = "memories/good_end/end_08.png";
+  good_end_image_paths[8] = "memories/good_end/end_09.png";
+  good_end_image_paths[9] = "memories/good_end/end_10.png";
+  good_end_image_paths[10] = "memories/good_end/end_11.png";
+  good_end_image_paths[11] = "memories/good_end/end_12.png";
+  good_end_image_paths[12] = "memories/good_end/end_13.png";
+  good_end_image_paths[13] = "memories/good_end/end_14.png";
+  good_end_image_paths[14] = "memories/good_end/end_15.png";
+  good_end_image_paths[15] = "memories/good_end/end_16.png";
+  good_end_image_paths[16] = "memories/good_end/end_17.png";
+  good_end_image_paths[17] = "memories/good_end/end_18.png";
+  
   Cutscene good_end = new Cutscene("good_end", good_end_image_paths);
   
   String[] bad_end_image_paths = new String[4];
@@ -112,9 +127,19 @@ void setup(SceneManager sceneManager)
   
   Cutscene bad_end = new Cutscene("bad_end", bad_end_image_paths);
   
-  //String[] neutral_end_image_paths = new String[1];
-  //neutral_end_image_paths[0] = "neutral_end.png";
-  //Cutscene neutral_end = new Cutscene("neutral_end", neutral_end_image_paths);
+  String[] neutral_end_image_paths = new String[11];
+  neutral_end_image_paths[0] = "memories/neutral_end/neutral_ending_01.png";
+  neutral_end_image_paths[1] = "memories/neutral_end/neutral_ending_02.png";
+  neutral_end_image_paths[2] = "memories/neutral_end/neutral_ending_03.png";
+  neutral_end_image_paths[3] = "memories/neutral_end/neutral_ending_04.png";
+  neutral_end_image_paths[4] = "memories/neutral_end/neutral_ending_05.png";
+  neutral_end_image_paths[5] = "memories/neutral_end/neutral_ending_06.png";
+  neutral_end_image_paths[6] = "memories/neutral_end/neutral_ending_07.png";
+  neutral_end_image_paths[7] = "memories/neutral_end/neutral_ending_08.png";
+  neutral_end_image_paths[8] = "memories/neutral_end/neutral_ending_09.png";
+  neutral_end_image_paths[9] = "memories/neutral_end/neutral_ending_10.png";
+  neutral_end_image_paths[10] = "memories/neutral_end/neutral_ending_11.png";
+  Cutscene neutral_end = new Cutscene("neutral_end", neutral_end_image_paths);
   
   
   String[] intro_image_paths = new String[13];
@@ -129,8 +154,8 @@ void setup(SceneManager sceneManager)
   intro_image_paths[8] = "memories/intro/9.png";
   intro_image_paths[9] = "memories/intro/10.png";
   intro_image_paths[10] = "memories/movie/movie_1.png";
-  intro_image_paths[11] = "memories/movie/movie_2.png";
-  intro_image_paths[12] = "memories/movie/movie_3.png";
+  intro_image_paths[11] = "memories/movie/movie_3.png";
+  intro_image_paths[12] = "memories/movie/movie_2.png";
   
   Cutscene intro = new Cutscene("intro", intro_image_paths);
   
@@ -143,8 +168,8 @@ void setup(SceneManager sceneManager)
   
   String[] movie_image_paths = new String[3];
   movie_image_paths[0] = "memories/movie/movie_1.png";
-  movie_image_paths[1] = "memories/movie/movie_2.png";
-  movie_image_paths[2] = "memories/movie/movie_3.png";
+  movie_image_paths[1] = "memories/movie/movie_3.png";
+  movie_image_paths[2] = "memories/movie/movie_2.png";
   Cutscene movie_memory = new Cutscene("movie", movie_image_paths);
 
 
@@ -200,7 +225,7 @@ void setup(SceneManager sceneManager)
   
   cutscene_manager.add_cutscene(good_end);
   cutscene_manager.add_cutscene(bad_end);
-  //cutscene_manager.add_cutscene(neutral_end);
+  cutscene_manager.add_cutscene(neutral_end);
   
   
   cutscene_manager.add_cutscene(sister_found_key);
@@ -476,7 +501,7 @@ void setup(SceneManager sceneManager)
   SceneChanger catacombs_to_hallway = new SceneChanger("catacombs_to_hallway", "hallway");
   catacombs_to_hallway.set_image("blank.png");
   catacombs_to_hallway.set_position(new PVector(127 * UF, 40 * UF));
-  catacombs_to_hallway.set_height(80 * UF);
+  catacombs_to_hallway.set_height(50 * UF);
   catacombs_to_hallway.set_width(110 * UF);
   catacombs_to_hallway.set_text("Go forwards to the hallway");
   catacombs_to_hallway.set_transition_sound("sounds/default_click.wav", this);
@@ -511,7 +536,7 @@ void setup(SceneManager sceneManager)
   hallway_to_catacombs.set_position(new PVector(22 * UF, 83 * UF));
   hallway_to_catacombs.set_height(25 * UF);
   hallway_to_catacombs.set_width(25 * UF);
-  hallway_to_catacombs.set_text("Go back to the catacombs");
+  hallway_to_catacombs.set_text("Go to the catacombs");
   hallway_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
@@ -528,7 +553,7 @@ void setup(SceneManager sceneManager)
   hallway_to_skull_room.set_image("blank.png");
   hallway_to_skull_room.set_position(new PVector(255 * UF, 24 * UF));
   hallway_to_skull_room.set_height(117 * UF);
-  hallway_to_skull_room.set_width(86 * UF);
+  hallway_to_skull_room.set_width(56 * UF);
   hallway_to_skull_room.set_text("Enter the creepy child room");
   hallway_to_skull_room.set_transition_sound("sounds/default_click.wav", this);
   
@@ -545,20 +570,24 @@ void setup(SceneManager sceneManager)
   
   //Pillar Room 
   SceneChanger pillar_room_to_catacombs = new SceneChanger("pillar_room_to_catacombs", "catacombs");
-  pillar_room_to_catacombs.set_image("icons/arrowLeft.png");
-  pillar_room_to_catacombs.set_position(new PVector(22 * UF, 130 * UF));
+  pillar_room_to_catacombs.set_image("icons/arrowDown.png");
+  
+  pillar_room_to_catacombs.set_position(new PVector(327 * UF, 140 * UF));
   pillar_room_to_catacombs.set_height(25 * UF);
   pillar_room_to_catacombs.set_width(25 * UF);
-  pillar_room_to_catacombs.set_text("Go to back to the catacombs");
+ 
+  
+  pillar_room_to_catacombs.set_text("Go to the catacombs");
   pillar_room_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
   SceneChanger pillar_room_to_hallway = new SceneChanger("pillar_room_to_hallway", "hallway");
-  pillar_room_to_hallway.set_image("icons/arrowDown.png");
-  pillar_room_to_hallway.set_position(new PVector(327 * UF, 140 * UF));
+  pillar_room_to_hallway.set_image("icons/arrowLeft.png");
+  pillar_room_to_hallway.set_position(new PVector(22 * UF, 130 * UF));
   pillar_room_to_hallway.set_height(25 * UF);
   pillar_room_to_hallway.set_width(25 * UF);
-  pillar_room_to_hallway.set_text("Go to down to the hallway");
+  
+  pillar_room_to_hallway.set_text("Go to the hallway");
   pillar_room_to_hallway.set_transition_sound("sounds/default_click.wav", this);
   
   
@@ -595,7 +624,7 @@ void setup(SceneManager sceneManager)
   candle_room_to_catacombs.set_position(new PVector(22 * UF, 84 * UF));
   candle_room_to_catacombs.set_height(25 * UF);
   candle_room_to_catacombs.set_width(25 * UF);
-  candle_room_to_catacombs.set_text("Go to back to the catacombs");
+  candle_room_to_catacombs.set_text("Go to the catacombs");
   candle_room_to_catacombs.set_transition_sound("sounds/default_click.wav", this);
   
   
@@ -620,7 +649,7 @@ void setup(SceneManager sceneManager)
   skull_room_to_candle_room.set_position(new PVector(327 * UF, 93 * UF));
   skull_room_to_candle_room.set_height(25 * UF);
   skull_room_to_candle_room.set_width(25 * UF);
-  skull_room_to_candle_room.set_text("Go back to hallway");
+  skull_room_to_candle_room.set_text("Go to hallway");
   skull_room_to_candle_room.set_transition_sound("sounds/default_click.wav", this);
   
   
@@ -638,7 +667,7 @@ void setup(SceneManager sceneManager)
   religious_room_to_pillar_room.set_position(new PVector(22 * UF, 103 * UF));
   religious_room_to_pillar_room.set_height(25 * UF);
   religious_room_to_pillar_room.set_width(25 * UF);
-  religious_room_to_pillar_room.set_text("Go back to the pillars");
+  religious_room_to_pillar_room.set_text("Go to the pillars");
   religious_room_to_pillar_room.set_transition_sound("sounds/default_click.wav", this);
   
   
@@ -685,7 +714,7 @@ void setup(SceneManager sceneManager)
   burial_room_to_hallway.set_position(new PVector(22 * UF, 105 * UF));
   burial_room_to_hallway.set_height(25 * UF);
   burial_room_to_hallway.set_width(25 * UF);
-  burial_room_to_hallway.set_text("Go back to the candle room");
+  burial_room_to_hallway.set_text("Go to the candle room");
   burial_room_to_hallway.set_transition_sound("sounds/default_click.wav", this);
   
   

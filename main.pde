@@ -55,7 +55,11 @@ void draw()
         cutscene_manager.play_cutscene("good_end");
         
       }
-      else
+      else if(correct_memories < 8 && correct_memories >= 6)
+      {
+        cutscene_manager.play_cutscene("neutral_end");
+      }
+      else if (correct_memories <= 5)
       {
         cutscene_manager.play_cutscene("bad_end");
       }
