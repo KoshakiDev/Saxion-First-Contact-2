@@ -27,6 +27,8 @@ PFont default_font;
 void settings()
 {
   size(wwidth, wheight);
+
+  //fullScreen();
 }
 
 void setup()

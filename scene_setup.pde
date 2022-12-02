@@ -453,7 +453,7 @@ void setup(SceneManager sceneManager)
   
   //Scene talk_to_sister = new Scene("sister", "temp_sister.jpeg");
   
-  Scene title_screen = new Scene("title_screen", "locations/church.png");
+  Scene title_screen = new Scene("title_screen", "church.png");
   
   Scene catacombs = new Scene("catacombs", "locations/catacombs.png");
   Scene hallway = new Scene("hallway", "locations/hallway.png");
