@@ -11,7 +11,7 @@ void end_setup()
   
   
   DragObject skull = new DragObject("Skull");
-  skull.set_position(new PVector (100 * UF, 50 * UF));
+  skull.set_position(new PVector (100 * UF, 25 * UF));
   skull.set_height(25 * UF);
   skull.set_width(25 * UF);
   skull.set_image("items/skull.png");
@@ -19,7 +19,7 @@ void end_setup()
   skull.set_cutscene_ID("skull");
   
   DragObject locket = new DragObject("Locket");
-  locket.set_position(new PVector (100 * UF, 100 * UF));
+  locket.set_position(new PVector (100 * UF, 50 * UF));
   locket.set_height(25 * UF);
   locket.set_width(25 * UF);
   locket.set_image("items/locket.png");
@@ -28,7 +28,7 @@ void end_setup()
   
   
   DragObject teddy_bear = new DragObject("Teddy Bear");
-  teddy_bear.set_position(new PVector (100 * UF, 150 * UF));
+  teddy_bear.set_position(new PVector (100 * UF, 100 * UF));
   teddy_bear.set_height(25 * UF);
   teddy_bear.set_width(25 * UF);
   teddy_bear.set_image("items/teddy_bear.png");
@@ -37,7 +37,7 @@ void end_setup()
   
   
   DragObject wine_glass = new DragObject("Wine Glass");
-  wine_glass.set_position(new PVector (250 * UF, 150 * UF));
+  wine_glass.set_position(new PVector (250 * UF, 100 * UF));
   wine_glass.set_height(25 * UF);
   wine_glass.set_width(25 * UF);
   wine_glass.set_image("items/wine_glass.png");
@@ -46,7 +46,7 @@ void end_setup()
   
   
   DragObject keys = new DragObject("Car Keys");
-  keys.set_position(new PVector (200 * UF, 150 * UF));
+  keys.set_position(new PVector (200 * UF, 100 * UF));
   keys.set_height(25 * UF);
   keys.set_width(25 * UF);
   keys.set_image("items/car_keys.png");
@@ -55,7 +55,7 @@ void end_setup()
   
   
   DragObject body = new DragObject("Body");
-  body.set_position(new PVector (150 * UF, 50 * UF));
+  body.set_position(new PVector (150 * UF, 25 * UF));
   body.set_height(25 * UF);
   body.set_width(25 * UF);
   body.set_image("items/body.png");
@@ -64,7 +64,7 @@ void end_setup()
   
   
   DragObject dirt = new DragObject("Dirt");
-  dirt.set_position(new PVector (150 * UF, 100 * UF));
+  dirt.set_position(new PVector (150 * UF, 50 * UF));
   dirt.set_height(25 * UF);
   dirt.set_width(25 * UF);
   dirt.set_image("items/dirt.png");
@@ -72,7 +72,7 @@ void end_setup()
   dirt.set_cutscene_ID("dirt");
   
   DragObject movie = new DragObject("Movie Memory");
-  movie.set_position(new PVector (150 * UF, 150 * UF));
+  movie.set_position(new PVector (150 * UF, 100 * UF));
   movie.set_height(25 * UF);
   movie.set_width(25 * UF);
   movie.set_image("items/movie.png");
@@ -739,8 +739,8 @@ void setup(SceneManager sceneManager)
   
   //sceneManager.set_current_scene(catacombs);
   
-  //sceneManager.set_current_scene(crypt_entrance);
-  sceneManager.set_current_scene(title_screen);
+  sceneManager.set_current_scene(crypt_entrance);
+  //sceneManager.set_current_scene(title_screen);
 
   
   
